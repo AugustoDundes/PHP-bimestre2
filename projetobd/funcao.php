@@ -25,53 +25,31 @@
         }
     }
 
-    function inserirProduto($nome, $descricao, $valor, $categoria){
+    function inserirProduto($nome, $valor){
         try{
-        $sql = "INSERT INTO produto (nome, valor, categoria_id) VALUES(:nome, :valor, :categoria)";
+        $sql = "INSERT INTO produto (nome, valor) VALUES(:nome, :valor)";
         $conexao = conectarBanco();
         $stmt = $conexao->prepare($sql);
         $stmt->bindValue(":nome", $nome);
         $stmt->bindValue(":valor", $valor);
-        $stmt->bindValue(":categoria", $categoria);
         return $stmt ->execute();
         } catch (Exception $e){
             return 0;
         } 
     }
 
-
-    function consultarProduto($id){
+    function consultarProdutoId($id){
         try{
-        $sql = "SELECT * FROM produto WHERE id= :id";
+        $sql = "SELECT * FROM produto WHERE id= :id"; //id=apelido
         $conexao = conectarBanco();
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch();
+
         } catch (Exception $e) {
             return 0;
         }
+    
     }
-
-function alterarProduto($nome, $descricao, $valor, $categoria, $id){
-    try{
-    $sql = "INSERT INTO produto SET nome =:nome, valor = :valor, categoria_id = :categoria WHERE id = :id";
-    $conexao = conectarBanco();
-    $stmt = $conexao->prepare($sql);
-    $stmt->bindValue(":nome", $nome);
-    $stmt->bindValue(":valor", $valor);
-    $stmt->bindValue(":categoria", $categoria);
-    $stmt->bindValue(":id", $id);
-    return $stmt ->execute();
-    } catch (Exception $e){
-        return 0;
-    } 
-}
-
-function excluirProduto($id){
-    try{
-    $sql = "DELETE FROM produto WHERE id = :id";
-    $conexao = conectarBanco();
-    $stmt = $conexao->prepare($sql);
-    $stmt->bindValue(":id", $id);
-    return $stmt ->execute();
-    } catch (Exception $e){
-        return 0;
-    } 
-}
+    

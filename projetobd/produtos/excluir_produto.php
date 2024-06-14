@@ -4,19 +4,19 @@
 ?>
 
     <h3> Inserir Produto </h3>
-    <form action="" method="POST">
+    <form>
         <div class="row">
             <label for="nome" class="form-label">Informe o nome</label>
-            <input type ="text" class="form-control" name="nome"> 
+            <input type ="text" class="form-control" name="nome" disabled> 
         </div>
         <div class="row">
             <label for="valor" class="form-label">Informe o valor</label>
-            <input type ="text" class="form-control" name="valor"> 
+            <input type ="text" class="form-control" name="valor" disabled> 
         </div>
         
         <div class="row">        
             <label for="categoria" class="form-label mt-3"> Selecione a categoria </label>
-            <select class="form-select" name="categoria">
+            <select class="form-select" name="categoria" disabled>
                 <?php
                     $linhas = retornarCategorias();
                     while ($l = $linhas->fetch(PDO::FETCH_ASSOC)){
@@ -27,8 +27,9 @@
         </div>
         <div class="row"> 
             <div class="col">
-                <button type="submit" class="btn btn-success mt-3">
-                    Salvar
+                <p> Deseja realmente excluir? </p>
+                <button type="submit" class="btn btn-danger mt-3">
+                    Excluir
                 </button>
             </div>    
         </div>
@@ -36,20 +37,4 @@
 
 
 <?php
-    if($_POST) {
-        $nome = $_POST['nome'];
-        $descricao = $_POST['descricao'];
-        $categoria = $_POST['categoria'];
-        $valor = $_POST['valor'];
-        if ($nome != "" && $descricao != "" && $valor != "" && $categoria != "")
-        {
-            if (inserirProduto($nome, $descricao, $valor, $categoria))
-            echo "Registro inserido com sucesso!";
-            else 
-                echo "Erro ao inserir o registro!";
-
-        } else {
-            echo "Preencha todos os campos!";
-        }
-    }
     require_once("../rodape.html");

@@ -9,8 +9,7 @@
     <table class="mt-3 table table-hover table-striped">
         <thead>
             <tr>
-                <th>Nome </th>
-                <th>Descrição</th>
+                <th>Nome</th>
                 <th>Valor</th>
                 <th>Categoria</th>     
             </tr>
@@ -22,11 +21,10 @@
             ?> 
             <tr>
                 <td><?= $l['nome'] ?></td>
-                <td><?= $l['descricao'] ?></td>
                 <td><?= $l['valor'] ?></td>
                 <td><?= $l['categoria'] ?></td>
                 <td>
-                    <a href="alterar_produto.php?id=<?= $l['id'] ?> =$l['id'] ?>" class="btn btn-warning">
+                    <a href="alterar_produto.php?id=<?= $l['id'] ?> =$l['id'] ?>" class="btn btn-danger">
                         Alterar
                     </a>
                     <a href="excluir_produto.php?id=<?= $l['id'] ?> =$l['id'] ?>" class="btn btn-danger">
@@ -43,3 +41,5 @@
 
 <?php   
     require_once("../rodape.html");
+
+   
