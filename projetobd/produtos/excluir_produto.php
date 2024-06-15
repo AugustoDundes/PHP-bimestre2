@@ -16,28 +16,21 @@
 ?>
 
     <h3> Excluir Produto </h3>
-    <form>
-            <?php 
-                $linhas = retornarProdutos();
-                while ($linhas = $linhas->fetch(PDO::FETCH_ASSOC)){
-            ?>
+    <form action="" method="POST">
         <div class="row">
             <label for="nome" class="form-label">Nome</label>
-            <input type ="text" class="form-control" value="<?= $linhas['nome'] ?>" name="nome" disabled> 
+            <input type ="text" class="form-control" value="<?= $dados['nome'] ?>" name="nome" disabled> 
             
         </div>
         <div class="row">
             <label for="preco" class="form-label">Valor</label>
-            <input type ="text" class="form-control" value="<?= $linhas['preco'] ?>" name="preco" disabled> 
+            <input type ="text" class="form-control" value="<?= $dados['preco'] ?>" name="preco" disabled> 
         </div>
         
         <div class="row">        
             <label for="categoria" class="form-label mt-3"> Categoria </label>
-            <input type ="text" class="form-control" value="<?= $linhas['categoria'] ?> "name="categoria" disabled>     
+            <input type ="text" class="form-control" value="<?= $dados['categoria'] ?> "name="categoria" disabled>     
         </div>
-            <?php
-                }
-            ?>
         <div class="row"> 
             <div class="col">
                 <p> Deseja realmente excluir? </p>
@@ -50,4 +43,5 @@
 
 
 <?php
+
     require_once("../rodape.html");

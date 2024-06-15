@@ -13,20 +13,13 @@
                 value="<?=$dados['nome']?>">
         </div>
         <div class="row">
-            <label for="valor" class="form-label">Informe o valor</label>
-            <input type ="text" class="form-control" name="valor"> 
+            <label for="email" class="form-label">Informe E-mail</label>
+            <input type ="text" class="form-control" name="email"> 
         </div>
         
         <div class="row">        
-            <label for="categoria" class="form-label mt-3"> Selecione a categoria </label>
-            <select class="form-select" name="categoria">
-                <?php
-                    $linhas = retornarCategorias();
-                    while ($l = $linhas->fetch(PDO::FETCH_ASSOC)){
-                        echo "<option value='{$l['id']}'>{$l['descricao']}</option>";
-                    }
-                ?>
-            </select>      
+            <label for="whats" class="form-label mt-3"> Informe o número de Whatsapp </label>
+            <input type ="text" class="form-control" name="whats">      
         </div>
         <div class="row"> 
             <div class="col">

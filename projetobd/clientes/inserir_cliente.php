@@ -3,35 +3,39 @@
 
 ?>
 
-    <h3> Inserir Produto </h3>
+    <h3> Inserir Cliente </h3>
     <form action="" method="POST">
         <div class="row">
             <label for="nome" class="form-label">Informe o nome</label>
-            <input type ="text" class="form-control" name="nome"> 
+            <input type ="text" class="form-control" name="nome">
         </div>
         <div class="row">
-            <label for="valor" class="form-label">Informe o valor</label>
-            <input type ="text" class="form-control" name="valor"> 
+            <label for="email" class="form-label">Informe E-mail</label>
+            <input type ="text" class="form-control" name="email"> 
         </div>
         
         <div class="row">        
-            <label for="categoria" class="form-label">Informe a categoria</label>
-            <input type ="text" class="form-control" name="categoria">     
+            <label for="whats" class="form-label mt-3"> Informe o número de Whatsapp </label>
+            <input type ="text" class="form-control" name="whats">      
         </div>
-       
+        <div class="row"> 
+            <div class="col">
+                <button type="submit" class="btn btn-success">
+                    Salvar
+                </button>
+            </div>    
         </div>
-        <input type="submit" value="Salvar" class="btn btn-success mt-3">
     </form>
 
 
 <?php
     if($_POST) {
         $nome = $_POST['nome'];
-        $valor = $_POST['valor'];
-        $categoria = $_POST['categoria'];
-        if ($nome != "" && $valor != "" && $categoria != "")
+        $email = $_POST['email'];
+        $whats = $_POST['whats'];
+        if ($nome != "" && $email != "" && $whats != "")
         {
-            if (inserirProduto($nome, $valor, $categoria))
+            if (inserirCliente($nome, $email, $whats))
                 echo "Registro inserido com sucesso!";
             else 
                 echo "Erro ao inserir o registro!";

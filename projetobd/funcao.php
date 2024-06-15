@@ -5,15 +5,6 @@
         return $conexao;
     }
 
-    function retornarCategorias(){
-        try{
-            $sql = "SELECT * FROM CATEGORIA";
-            $conexao = conectarBanco();
-            return $conexao->query($sql);
-        } catch(Exception $e){
-            return 0;
-        }
-    }
 
     function retornarProdutos(){
         try{
@@ -25,9 +16,39 @@
         }
     }
 
+    function retornarClientes(){
+        try{
+            $sql = "SELECT * FROM cliente"; 
+            $conexao = conectarBanco();
+            return $conexao->query($sql);
+        } catch(Exception $e){
+            return 0;
+        }
+    }
+    function retornarVenda(){
+        try{
+            $sql = "SELECT * FROM cliente"; 
+            $conexao = conectarBanco();
+            return $conexao->query($sql);
+        } catch(Exception $e){
+            return 0;
+        }
+    }
+
     function excluirProduto($id){
         try{ 
             $sql = "DELETE FROM produto WHERE id = :id";
+            $conexao = conectarBanco();
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            return $stmt->execute();
+        } catch (Exception $e){
+            return 0;
+        }
+    }
+    function excluirCliente($id){
+        try{ 
+            $sql = "DELETE FROM cliente WHERE id = :id";
             $conexao = conectarBanco();
             $stmt = $conexao->prepare($sql);
             $stmt->bindValue(":id", $id);
@@ -48,6 +69,19 @@
         return $stmt ->execute();
         } catch (Exception $e){
             return 0;
+        }
+    } 
+    function inserirCliente($nome, $email, $whats){
+        try{
+        $sql = "INSERT INTO cliente (nome, email, whats) VALUES(:nome, :email, :whats)";
+        $conexao = conectarBanco();
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindValue(":nome", $nome);
+        $stmt->bindValue(":email", $email);
+        $stmt->bindValue(":whats", $whats);
+        return $stmt ->execute();
+        } catch (Exception $e){
+            return 0;
         } 
     }
 
@@ -64,5 +98,23 @@
             return 0;
         }
     
+    }
+    function consultarClienteId($id){
+        try{
+        $sql = "SELECT * FROM cliente WHERE id= :id";
+        $conexao = conectarBanco();
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch();
+
+        } catch (Exception $e) {
+            return 0;
+        }
+    
+    }
+    function listarClientes(){
+        $conexao = conectarBanco();
+        return $conexao->query("SELECT * FROM cliente");
     }
     

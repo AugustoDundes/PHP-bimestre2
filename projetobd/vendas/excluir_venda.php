@@ -7,28 +7,29 @@
     } 
     if ($_POST){
         $id = $_SESSION['id'];
-        if(excluirCliente($_SESSION['id']))
+        if(excluirvenda($_SESSION['id']))
             header('Location: index.php');
         else
             echo "Erro ao excluir o registro!";
     }
-    $dados = consultarClienteId($id);
+    $dados = consultarvendaId($id);
 ?>
 
-    <h3> Excluir Cliente </h3>
-    <form>
+    <h3> Excluir venda </h3>
+    <form action="" method="POST">
         <div class="row">
-            <label for="nome" class="form-label">Informe o nome</label>
-            <input type ="text" class="form-control" value="<?= $dados['nome'] ?>" name="nome" disabled>  
+            <label for="nome" class="form-label">Nome</label>
+            <input type ="text" class="form-control" value="<?= $dados['nome'] ?>" name="nome" disabled> 
+            
         </div>
         <div class="row">
-            <label for="email" class="form-label">Informe o E-mail</label>
-            <input type ="text" class="form-control" value="<?= $dados['email'] ?>" name="email" disabled>  
+            <label for="preco" class="form-label">Valor</label>
+            <input type ="text" class="form-control" value="<?= $dados['preco'] ?>" name="preco" disabled> 
         </div>
         
         <div class="row">        
-            <label for="whats" class="form-label mt-3"> Informe o número de Whatsapp </label>
-            <input type ="text" class="form-control" value="<?= $dados['whats'] ?>" name="whats" disabled>  
+            <label for="categoria" class="form-label mt-3"> Categoria </label>
+            <input type ="text" class="form-control" value="<?= $dados['categoria'] ?> "name="categoria" disabled>     
         </div>
         <div class="row"> 
             <div class="col">
@@ -39,5 +40,8 @@
             </div>    
         </div>
     </form>
+
+
 <?php
+
     require_once("../rodape.html");

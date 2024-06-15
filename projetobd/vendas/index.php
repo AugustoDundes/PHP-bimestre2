@@ -2,34 +2,34 @@
     require_once("../cabecalho.php");
 
 ?>
-    <h3> Gerenciamento de Clientes </h3>
+    <h3> Gerenciamento de vendas </h3>
 
-    <a href="inserir_cliente.php" class="btn btn-primary mt-3"> Adicionar Cliente </a>
+    <a href="inserir_venda.php" class="btn btn-primary mt-3"> Adicionar venda </a>
 
     <table class="mt-3 table table-hover table-striped">
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>whats</th>     
+                <th>Cliente</th>
+                <th>Data</th>     
             </tr>
         </thead>
         </tbody>
             <?php 
-                $linhas = retornarClientes();
+                $linhas = retornarVenda();
                 while ($l = $linhas->fetch(PDO::FETCH_ASSOC)){
             ?> 
             <tr>
-                <td><?= $l['nome'] ?></td>
-                <td><?= $l['email'] ?></td>
-                <td><?= $l['whats'] ?></td>
+                <td><?= $l['datavenda'] ?></td>
+                <td><?= $l['preco'] ?></td>
                 <td>
-                    <a href="alterar_cliente.php?id=<?= $l['id'] ?>" class="btn btn-danger">
+                    <form action="" method="GET">
+                    <a href="alterar_venda.php?id=<?= $l['id'] ?>" class="btn btn-danger">
                         Alterar
                     </a>
-                    <a href="excluir_cliente.php?id=<?= $l['id'] ?>" class="btn btn-danger">
+                    <a href="excluir_venda.php?id=<?= $l['id'] ?>" class="btn btn-danger">
                         Excluir
                     </a>
+                </form>
                 </td> 
             </tr>
             <?php

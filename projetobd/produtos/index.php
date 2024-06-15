@@ -24,12 +24,14 @@
                 <td><?= $l['preco'] ?></td>
                 <td><?= $l['categoria'] ?></td>
                 <td>
+                    <form action="" method="GET">
                     <a href="alterar_produto.php?id=<?= $l['id'] ?>" class="btn btn-danger">
                         Alterar
                     </a>
                     <a href="excluir_produto.php?id=<?= $l['id'] ?>" class="btn btn-danger">
                         Excluir
                     </a>
+                </form>
                 </td> 
             </tr>
             <?php
