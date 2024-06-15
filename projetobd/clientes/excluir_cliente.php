@@ -1,6 +1,6 @@
 <?php
     require_once("../cabecalho.php");
-
+    
 ?>
 
     <h3> Inserir Produto </h3>

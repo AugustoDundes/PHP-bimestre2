@@ -18,14 +18,8 @@
         </div>
         
         <div class="row">        
-            <label for="categoria" class="form-label mt-3"> Selecione a categoria </label>
-            <select class="form-select" name="categoria">
-                <?php
-                    $linhas = retornarCategorias();
-                    while ($l = $linhas->fetch(PDO::FETCH_ASSOC)){
-                        echo "<option value='{$l['id']}'>{$l['descricao']}</option>";
-                    }
-                ?>
+            <label for="valor" class="form-label">Informe a categoria</label>
+            <input type ="text" class="form-control" name="valor"> 
             </select>      
         </div>
         <div class="row"> 
@@ -39,4 +33,19 @@
 
 
 <?php
+if($_POST) {
+    $nome = $_POST['nome'];
+    $preco = $_POST['preco'];
+    $categoria = $_POST['categoria'];
+    if ($nome != "" && $preco != "" && $categoria != "")
+    {
+        if (inserirProduto($nome, $preco, $categoria))
+            echo "Registro inserido com sucesso!";
+        else 
+            echo "Erro ao inserir o registro!";
+
+    } else {
+        echo "Preencha todos os campos!";
+    }
+}
     require_once("../rodape.html");
