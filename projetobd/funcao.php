@@ -25,12 +25,12 @@
         }
     }
 
-    function excluirProduto($idFaixas){
+    function excluirProduto($id){
         try{ 
-            $sql = "DELETE FROM produto WHERE idFaixas = :idFaixas";
+            $sql = "DELETE FROM produto WHERE id = :id";
             $conexao = conectarBanco();
             $stmt = $conexao->prepare($sql);
-            $stmt->bindValue(":idFaixas", $idFaixas);
+            $stmt->bindValue(":id", $id);
             return $stmt->execute();
         } catch (Exception $e){
             return 0;
@@ -53,7 +53,7 @@
 
     function consultarProdutoId($id){
         try{
-        $sql = "SELECT * FROM produto WHERE id= :id"; //id=apelido
+        $sql = "SELECT * FROM produto WHERE id= :id";
         $conexao = conectarBanco();
         $stmt = $conexao->prepare($sql);
         $stmt->bindValue(":id", $id);

@@ -23,17 +23,17 @@
             ?>
         <div class="row">
             <label for="nome" class="form-label">Nome</label>
-            <input type ="text" class="form-control" value="<?= $l['nome'] ?>" name="nome" disabled> 
+            <input type ="text" class="form-control" value="<?= $linhas['nome'] ?>" name="nome" disabled> 
             
         </div>
         <div class="row">
             <label for="preco" class="form-label">Valor</label>
-            <input type ="text" class="form-control" value="<?= $l['preco'] ?>" name="preco" disabled> 
+            <input type ="text" class="form-control" value="<?= $linhas['preco'] ?>" name="preco" disabled> 
         </div>
         
         <div class="row">        
             <label for="categoria" class="form-label mt-3"> Categoria </label>
-            <input type ="text" class="form-control" value="<?= $l['categoria'] ?> "name="categoria" disabled>     
+            <input type ="text" class="form-control" value="<?= $linhas['categoria'] ?> "name="categoria" disabled>     
         </div>
             <?php
                 }
