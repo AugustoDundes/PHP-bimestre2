@@ -1,7 +1,7 @@
 <?php
 
     function conectarBanco(){
-        $conexao = new PDO("mysql:host=localhost; dbname=bancophp", "root", "");
+        $conexao = new PDO("mysql:host=localhost; dbname=mydb", "root", "");
         return $conexao;
     }
 
@@ -25,13 +25,14 @@
         }
     }
 
-    function inserirProduto($nome, $valor){
+    function inserirProduto($nome, $valor, $categoria){
         try{
-        $sql = "INSERT INTO produto (nome, valor) VALUES(:nome, :valor)";
+        $sql = "INSERT INTO produto (nome, preco, categoria) VALUES(:nome, :preco, :categoria)";
         $conexao = conectarBanco();
         $stmt = $conexao->prepare($sql);
         $stmt->bindValue(":nome", $nome);
-        $stmt->bindValue(":valor", $valor);
+        $stmt->bindValue(":preco", $valor);
+        $stmt->bindValue(":categoria", $categoria);
         return $stmt ->execute();
         } catch (Exception $e){
             return 0;
