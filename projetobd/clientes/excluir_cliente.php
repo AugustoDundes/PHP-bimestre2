@@ -16,7 +16,7 @@
 ?>
 
     <h3> Excluir Cliente </h3>
-    <form>
+    <form action="excluir_cliente.php" method="POST">
         <div class="row">
             <label for="nome" class="form-label">Informe o nome</label>
             <input type ="text" class="form-control" value="<?= $dados['nome'] ?>" name="nome" disabled>  
@@ -33,9 +33,7 @@
         <div class="row"> 
             <div class="col">
                 <p> Deseja realmente excluir? </p>
-                <button type="submit" class="btn btn-danger mt-3">
-                    Excluir
-                </button>
+                <input type="submit" class="btn btn-danger mt-3" value="Excluir" name="btnExcluir">
             </div>    
         </div>
     </form>

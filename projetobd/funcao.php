@@ -118,3 +118,31 @@
         return $conexao->query("SELECT * FROM cliente");
     }
     
+    function alterarProduto($nome, $preco, $categoria, $id){
+        try{ 
+            $sql = "UPDATE produto SET nome = :nome, preco = :preco, categoria = :categoria WHERE id = :id";
+            $conexao = conectarBanco();
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":nome", $nome);
+            $stmt->bindValue(":id", $id);
+            $stmt->bindValue(":preco", $preco);
+            $stmt->bindValue(":categoria", $categoria);
+            return $stmt->execute();
+        } catch (Exception $e){
+            return 0;
+        }
+    }
+    function alterarCliente($nome, $email, $whats, $id){
+        try{ 
+            $sql = "UPDATE cliente SET nome = :nome, email = :email, whats = :whats WHERE id = :id";
+            $conexao = conectarBanco();
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":nome", $nome);
+            $stmt->bindValue(":id", $id);
+            $stmt->bindValue(":email", $email);
+            $stmt->bindValue(":whats", $whats);
+            return $stmt->execute();
+        } catch (Exception $e){
+            return 0;
+        }
+    }

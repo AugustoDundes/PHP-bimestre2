@@ -16,7 +16,7 @@
 ?>
 
     <h3> Excluir Produto </h3>
-    <form action="" method="POST">
+    <form action="excluir_produto.php" method="POST">
         <div class="row">
             <label for="nome" class="form-label">Nome</label>
             <input type ="text" class="form-control" value="<?= $dados['nome'] ?>" name="nome" disabled> 
@@ -34,9 +34,7 @@
         <div class="row"> 
             <div class="col">
                 <p> Deseja realmente excluir? </p>
-                <button type="submit" class="btn btn-danger mt-3">
-                    Excluir
-                </button>
+                <input type="submit" class="btn btn-danger mt-3" value="Excluir" name="btnExcluir">
             </div>    
         </div>
     </form>

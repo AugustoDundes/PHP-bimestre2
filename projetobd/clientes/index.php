@@ -24,7 +24,7 @@
                 <td><?= $l['email'] ?></td>
                 <td><?= $l['whats'] ?></td>
                 <td>
-                    <a href="alterar_cliente.php?id=<?= $l['id'] ?>" class="btn btn-danger">
+                    <a href="alterar_cliente.php?id=<?= $l['id'] ?>" class="btn btn-warning">
                         Alterar
                     </a>
                     <a href="excluir_cliente.php?id=<?= $l['id'] ?>" class="btn btn-danger">
