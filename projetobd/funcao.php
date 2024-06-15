@@ -27,7 +27,7 @@
     }
     function retornarVenda(){
         try{
-            $sql = "SELECT * FROM cliente"; 
+            $sql = "SELECT * FROM venda"; 
             $conexao = conectarBanco();
             return $conexao->query($sql);
         } catch(Exception $e){
@@ -66,6 +66,18 @@
         $stmt->bindValue(":nome", $nome);
         $stmt->bindValue(":preco", $preco);
         $stmt->bindValue(":categoria", $categoria);
+        return $stmt ->execute();
+        } catch (Exception $e){
+            return 0;
+        }
+    } 
+    function inserirItem($produto, $qtde){
+        try{
+        $sql = "INSERT INTO item (produto_id, qtde) VALUES(:produto_id, :qtde)";
+        $conexao = conectarBanco();
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindValue(":produto_id", $produto);
+        $stmt->bindValue(":qtde", $qtde);
         return $stmt ->execute();
         } catch (Exception $e){
             return 0;
@@ -117,6 +129,10 @@
         $conexao = conectarBanco();
         return $conexao->query("SELECT * FROM cliente");
     }
+    function listarProdutos(){
+        $conexao = conectarBanco();
+        return $conexao->query("SELECT * FROM produtos");
+    }
     
     function alterarProduto($nome, $preco, $categoria, $id){
         try{ 
@@ -142,6 +158,23 @@
             $stmt->bindValue(":email", $email);
             $stmt->bindValue(":whats", $whats);
             return $stmt->execute();
+        } catch (Exception $e){
+            return 0;
+        }
+    }
+
+
+    function inserirVenda($data, $cliente, $produtos, $qtde){
+        try{
+        $sql = "INSERT INTO venda (data, cliente) VALUES(:data, :cliente)
+                INSERT INTO item (produto_id, qtde) VALUES(:produto_id, :qtde)";
+        $conexao = conectarBanco();
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindValue(":data", $data);
+        $stmt->bindValue(":produto_id", $produtos);
+        $stmt->bindValue(":qtde", $qtde);
+        $stmt->bindValue(":cliente", $cliente);
+        return $stmt ->execute();
         } catch (Exception $e){
             return 0;
         }

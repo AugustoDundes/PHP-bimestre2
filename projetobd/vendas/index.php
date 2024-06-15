@@ -1,6 +1,10 @@
 <?php
     require_once("../cabecalho.php");
-
+    session_start();
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $_SESSION['id'] = $id;
+    } 
 ?>
     <h3> Gerenciamento de vendas </h3>
 
@@ -9,8 +13,8 @@
     <table class="mt-3 table table-hover table-striped">
         <thead>
             <tr>
-                <th>Cliente</th>
-                <th>Data</th>     
+                <th>Data</th>
+                <th>Cliente</th>     
             </tr>
         </thead>
         </tbody>
@@ -20,16 +24,17 @@
             ?> 
             <tr>
                 <td><?= $l['datavenda'] ?></td>
-                <td><?= $l['preco'] ?></td>
-                <td>
-                    <form action="" method="GET">
+                <td><?= $l['cliente_id'] ?></td>
+                <td>                   
                     <a href="alterar_venda.php?id=<?= $l['id'] ?>" class="btn btn-warning">
                         Alterar
                     </a>
                     <a href="excluir_venda.php?id=<?= $l['id'] ?>" class="btn btn-danger">
                         Excluir
-                    </a>
-                </form>
+                    </a>                   
+                    <a href="../itens/index.php?id=<?= $l['id'] ?>" class="btn btn-success">
+                        Itens
+                    </a> 
                 </td> 
             </tr>
             <?php
