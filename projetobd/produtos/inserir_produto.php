@@ -10,14 +10,15 @@
             <input type ="text" class="form-control" name="nome"> 
         </div>
         <div class="row">
-            <label for="valor" class="form-label">Informe o valor</label>
-            <input type ="text" class="form-control" name="valor"> 
+            <label for="preco" class="form-label">Informe o valor</label>
+            <input type ="text" class="form-control" name="preco"> 
         </div>
         
         <div class="row">        
             <label for="categoria" class="form-label">Informe a categoria</label>
             <input type ="text" class="form-control" name="categoria">     
         </div>
+        
        
         </div>
         <input type="submit" value="Salvar" class="btn btn-success mt-3">
@@ -27,11 +28,11 @@
 <?php
     if($_POST) {
         $nome = $_POST['nome'];
-        $valor = $_POST['valor'];
+        $preco = $_POST['preco'];
         $categoria = $_POST['categoria'];
-        if ($nome != "" && $valor != "" && $categoria != "")
+        if ($nome != "" && $preco != "" && $categoria != "")
         {
-            if (inserirProduto($nome, $valor, $categoria))
+            if (inserirProduto($nome, $preco, $categoria))
                 echo "Registro inserido com sucesso!";
             else 
                 echo "Erro ao inserir o registro!";

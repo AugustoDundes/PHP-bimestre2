@@ -17,7 +17,7 @@
 
     function retornarProdutos(){
         try{
-            $sql = "SELECT p.* as categoria FROM produto p INNER JOIN categoria c ON c.id = p.categoria_id";
+            $sql = "SELECT * FROM produto";
             $conexao = conectarBanco();
             return $conexao->query($sql);
         } catch(Exception $e){
@@ -25,13 +25,25 @@
         }
     }
 
-    function inserirProduto($nome, $valor, $categoria){
+    function excluirProduto($idFaixas){
+        try{ 
+            $sql = "DELETE FROM produto WHERE idFaixas = :idFaixas";
+            $conexao = conectarBanco();
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":idFaixas", $idFaixas);
+            return $stmt->execute();
+        } catch (Exception $e){
+            return 0;
+        }
+    }
+
+    function inserirProduto($nome, $preco, $categoria){
         try{
         $sql = "INSERT INTO produto (nome, preco, categoria) VALUES(:nome, :preco, :categoria)";
         $conexao = conectarBanco();
         $stmt = $conexao->prepare($sql);
         $stmt->bindValue(":nome", $nome);
-        $stmt->bindValue(":preco", $valor);
+        $stmt->bindValue(":preco", $preco);
         $stmt->bindValue(":categoria", $categoria);
         return $stmt ->execute();
         } catch (Exception $e){

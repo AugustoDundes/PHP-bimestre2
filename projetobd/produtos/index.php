@@ -21,13 +21,13 @@
             ?> 
             <tr>
                 <td><?= $l['nome'] ?></td>
-                <td><?= $l['valor'] ?></td>
+                <td><?= $l['preco'] ?></td>
                 <td><?= $l['categoria'] ?></td>
                 <td>
-                    <a href="alterar_produto.php?id=<?= $l['id'] ?> =$l['id'] ?>" class="btn btn-danger">
+                    <a href="alterar_produto.php?id=<?= $l['id'] ?>" class="btn btn-danger">
                         Alterar
                     </a>
-                    <a href="excluir_produto.php?id=<?= $l['id'] ?> =$l['id'] ?>" class="btn btn-danger">
+                    <a href="excluir_produto.php?id=<?= $l['id'] ?>" class="btn btn-danger">
                         Excluir
                     </a>
                 </td> 
